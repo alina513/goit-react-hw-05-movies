@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Loader } from 'components/Loader';
 import toast from 'react-hot-toast';
 import css from "./Reviews.module.css"
-export default function () {
+export default function Reviews() {
   const [moviesData, setMovieData] = useState([]);
   const [loading, setLoading] = useState(false);
 
