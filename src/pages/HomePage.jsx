@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { fetchMovies } from 'helpers/helpers';
 import { Loader } from 'components/Loader';
 import toast from 'react-hot-toast';
+import css from "./HomePage.module.css"
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -26,7 +27,7 @@ export default function HomePage() {
 
   return (
     <main>
-      <h2>Trending today</h2>
+      <h2 className={css.title}>Trending today</h2>
       {loading && <Loader />}
       {movies.length > 0 && <List movies={movies} />}
     </main>

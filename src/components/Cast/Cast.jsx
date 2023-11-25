@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loader } from 'components/Loader';
 import toast from 'react-hot-toast';
+import css from "./Cast.module.css"
 export default function () {
   const [moviesData, setMovieData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -31,10 +32,10 @@ export default function () {
   return (
     <div>
       {loading && <Loader />}
-      <ul>
+      <ul className={css.list}>
         {moviesData.map(movie => {
           return (
-            <li key={movie.id}>
+            <li key={movie.id} className={css.item}>
               <img
                 src={
                   movie.profile_path

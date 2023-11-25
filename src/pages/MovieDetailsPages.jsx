@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { Loader } from 'components/Loader';
 import toast from 'react-hot-toast';
+import css from "./MovieDetailPages.module.css"
 
 export default function MovieDetailsPage() {
   const [movieData, setMovieData] = useState(null);
@@ -37,11 +38,11 @@ export default function MovieDetailsPage() {
   }, [movieId]);
 
   return (
-    <div>
+    <div className={css.container}>
       <Link to={backLinkRef.current.state?.from ?? '/'}>Go back</Link>
       {loading && <Loader />}
       {movieData && (
-        <div>
+        <div className={css.film}>
           <img
             src={
               movieData.poster_path
@@ -51,23 +52,25 @@ export default function MovieDetailsPage() {
             width={250}
             alt="poster"
           />
-          <h1>
+          <div>
+          <h1 className={css.title}>
             {movieData.title}({parseInt(movieData.release_date)})
           </h1>
-          <p>User score:{parseInt(movieData.popularity)}%</p>
-          <h2>Overview</h2>
-          <p>{movieData.overview}</p>
-          <h3>Genres</h3>
-          <ul>
+          <p className={css.view}>User score:{parseInt(movieData.popularity)}%</p>
+          <h2 className={css.overview}>Overview</h2>
+          <p className={css.description}>{movieData.overview}</p>
+          <h3 className={css.genres}>Genres</h3>
+          <ul className={css.link}>
             {movieData.genres &&
               movieData.genres.map(genre => (
                 <li key={genre.id}>{genre.name}</li>
               ))}
           </ul>
+          </div>
         </div>
       )}
       <div>
-        <h2>Additional information</h2>
+        <h2 className={css.information}>Additional information</h2>
         <ul>
           <li>
             <Link to="cast">Cast</Link>
